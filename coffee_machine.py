@@ -37,10 +37,12 @@ def report():
     water_remaining = resources["water"]
     milk_remaining= resources["milk"]
     coffee_remaining = resources["coffee"]
+    global profit 
 
     print(f"Water: {water_remaining}ml")
     print(f"Milk: {milk_remaining}ml")
     print(f"Coffee: {water_remaining}g")
+    print(f"Profit: ${profit}")
 
 def resources_remaining():
     """ Returns the ingredients remaining quantities """
@@ -91,6 +93,8 @@ def check_money(coffee_ordered):
     else:
         print(f"Here is ${change_money} in change.")
         print(f"Here is your {coffee_ordered}. Enjoy!")
+        global profit 
+        profit += cost
         return True
 
 def make_coffee(coffee):
@@ -102,6 +106,7 @@ def make_coffee(coffee):
         resources["water"] -= MENU[coffee]["ingredients"]["water"]
         resources["coffee"] -= MENU[coffee]["ingredients"]["coffee"]
 
+profit = 0
 exit_app = False
 
 def coffee_machine():
